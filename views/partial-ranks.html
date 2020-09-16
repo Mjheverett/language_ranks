@@ -6,17 +6,24 @@
     </div>
 </section>
 
+<br/>
 <div class="columns is-centered">
     <div class="column content is-half has-text-centered">
-        ${data.map(language => `<dir><p>${language.language_name} - I am <b>${language.rank_name}</b> at ${language.language_name}</p>
-        <select id="${language.language_name}_select">
-            <option value=''>Update ${language.language_name} ranking</option>
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-            <option value=0>0</option>
-        </select></dir>`).join('')}
+        <form action="/" method="POST">
+            ${data.map(language => `
+            <label>
+                <p>${language.language_name} - I am <b>${language.rank_name}</b> at ${language.language_name}</p>
+                <select name="${language.language_name}">
+                    <option value=''>Update ${language.language_name} ranking</option>
+                    <option value=1>Awesome</option>
+                    <option value=2>Great</option>
+                    <option value=3>Good</option>
+                    <option value=4>Okay</option>
+                    <option value=5>Poor</option>
+                    <option value=0>Unranked</option>
+                </select>
+            </label><br/>`).join('')}
+            <button type="submit">Submit Data</button>
+        </form>
     </div>
-</div>
+</div> 
