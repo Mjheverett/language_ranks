@@ -1,0 +1,22 @@
+<section class="hero is-dark">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">${title}</h1>
+        </div>
+    </div>
+</section>
+
+<div class="columns is-centered">
+    <div class="column content is-half has-text-centered">
+        ${data.map(language => `<dir><p>${language.language_name} - I am <b>${language.rank_name}</b> at ${language.language_name}</p>
+        <select id="${language.language_name}_select">
+            <option value=''>Update ${language.language_name} ranking</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=0>0</option>
+        </select></dir>`).join('')}
+    </div>
+</div>

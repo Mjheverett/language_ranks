@@ -1,0 +1,18 @@
+{
+  "name": "languagerank",
+  "version": "0.0.1",
+  "description": "Rank knowledge of current coding languages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js"
+  },
+  "author": "Matthew Everett",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-es6-template-engine": "^2.2.3",
+    "pg-promise": "^10.6.1"
+  }
+}
