@@ -4,11 +4,14 @@ const rankModel = require("../models/rankModel");
 
 const renderPage = async res => {
     const rankData = await rankModel.getAll();
+    const statusData = await rankModel.getAllStatuses();
+    console.log("statusData", statusData);
     // console.log("rankData". rankData);
     res.render("template", {
         locals: {
             title: "Language Ranks",
-            data: rankData,
+            rankData: rankData,
+            statusData: statusData,
         },
         partials: {
             partial: "partial-ranks",

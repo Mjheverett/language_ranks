@@ -16,7 +16,18 @@ class RankList {
                 );
             return response;
         } catch (error) {
-            return error.message;
+            console.error("ERROR:", error);
+            return error;
+        }
+    }
+
+    static async getAllStatuses() {
+        try {
+            const response = await db.any(`SELECT * FROM ranking_scale;`);
+            return response;
+        } catch (error) {
+            console.error("ERROR:", error);
+            return error;
         }
     }
 
@@ -28,6 +39,7 @@ class RankList {
             return response;
         } catch (error) {
             console.error("ERROR:", error);
+            return error;
         }
     }
 }
