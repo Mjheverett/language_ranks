@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const rankModel = require("../models/rankModel");
 
-router.get("/", async (req, res) => {
+const renderPage = async res => {
     const rankData = await rankModel.getAll();
     // console.log("rankData". rankData);
     res.render("template", {
@@ -14,17 +14,19 @@ router.get("/", async (req, res) => {
             partial: "partial-ranks",
         },
     });
+}
+
+router.get("/", async (req, res, next) => {
+    renderPage(res);
 });
 
 router.post("/", async (req,res) => {
     for (let key in req.body) {
-        console.log("The key is:", key, req.body[key]);
         if (req.body[key] !== '') {
-            const dbResponse = await rankModel.updateData(key, req.body[key]);
-            console.log("db response is:", dbResponse);
+            await rankModel.updateData(key, req.body[key]);
         }
     }
-    res.status(200).send('OK').end();
+    renderPage(res);
 })
 
 module.exports = router;
