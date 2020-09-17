@@ -17,7 +17,13 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req,res) => {
-    console.log(req.body);
+    for (let key in req.body) {
+        console.log("The key is:", key, req.body[key]);
+        if (req.body[key] !== '') {
+            const dbResponse = await rankModel.updateData(key, req.body[key]);
+            console.log("db response is:", dbResponse);
+        }
+    }
     res.status(200).send('OK').end();
 })
 

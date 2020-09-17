@@ -8,10 +8,26 @@ class RankList {
 
     static async getAll() {
         try {
-            const response = await db.any(`SELECT * FROM topics INNER JOIN ranking_scale ON topics.rank_id = ranking_scale.id;`);
+            const response = await db.any(
+                `SELECT * FROM topics 
+                INNER JOIN ranking_scale 
+                ON topics.rank_id = ranking_scale.id
+                ORDER BY topics.id;`
+                );
             return response;
         } catch (error) {
             return error.message;
+        }
+    }
+
+    static async updateData(language_name, rank_id) {
+        try {
+            const response = await db.result(
+                `UPDATE topics SET rank_id = $1 WHERE language_name = $2`, [rank_id, language_name]
+            );
+            return response;
+        } catch (error) {
+            console.error("ERROR:", error);
         }
     }
 }

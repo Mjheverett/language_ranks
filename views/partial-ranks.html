@@ -10,17 +10,17 @@
 <div class="columns is-centered">
     <div class="column content is-half has-text-centered">
         <form action="/" method="POST">
-            ${data.map(language => `
+            ${data.map(entry => `
             <label>
-                <p>${language.language_name} - I am <b>${language.rank_name}</b> at ${language.language_name}</p>
-                <select name="${language.language_name}">
-                    <option value=''>Update ${language.language_name} ranking</option>
+                <p>${entry.language_name} - I am <b>${entry.rank_name}</b> at ${entry.language_name}</p>
+                <select name="${entry.language_name}">
+                    <option value=''>Update ${entry.language_name} ranking</option>
                     <option value=1>Awesome</option>
                     <option value=2>Great</option>
                     <option value=3>Good</option>
                     <option value=4>Okay</option>
                     <option value=5>Poor</option>
-                    <option value=0>Unranked</option>
+                    <option value=6>Unranked</option>
                 </select>
             </label><br/>`).join('')}
             <button type="submit">Submit Data</button>
